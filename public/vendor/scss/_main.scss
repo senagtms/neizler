@@ -1,0 +1,99 @@
+header {
+  height: 60px;
+}
+footer {
+  background: $purple;
+  color: #fff;
+  padding: 20px 0;
+  #foot-top {
+    display: flex;
+    justify-content: space-between;
+    ul#foot-socials {
+      display: flex;
+      li {
+        a {
+          color: #fff;
+          @include flex;
+          width: 30px;
+          height: 30px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  #foot-bottom {
+    display: flex;
+    justify-content: space-between;
+    #foot-links {
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
+section.movieCardContent {
+  #movieCards {
+    display: flex;
+    margin: -5px;
+    flex-wrap: wrap;
+    .movie-card {
+      background: #fff;
+      flex: 0 0 calc((100% / 4) - 10px);
+      margin: 5px;
+      @include borderRadius(5px);
+
+      &-cover {
+        height: 380px;
+        img {
+          @extend %fitCover;
+        }
+      }
+      &-body {
+        padding: 0 5px;
+        &-title {
+          color: $purple;
+          font-weight: 500;
+          font-size: 16px;
+          span {
+            font-weight: normal;
+          }
+        }
+        &-category {
+          font-weight: 300;
+          font-size: 12px;
+        }
+        &-button {
+          display: inline-block;
+          border: 1px solid $purple;
+          color: $purple !important;
+          color: #fff;
+          padding: 5px;
+          width: 100%;
+          font-size: 12px;
+          text-align: center;
+          @include borderRadius(4px);
+          &:hover {
+            background: $purple;
+            color: #fff !important;
+          }
+        }
+      }
+      @include tabletSize {
+        flex: 0 0 calc((100% / 3) - 10px);
+        &-cover {
+          height: 320px;
+        }
+      }
+      @include mobileSize {
+        flex: 0 0 calc((100% / 2) - 10px);
+        &-cover {
+          height: 280px;
+        }
+      }
+    }
+  }
+}
+
+#authForm {
+  width: 380px;
+}

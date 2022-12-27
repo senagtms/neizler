@@ -1,0 +1,13 @@
+header.bg-purple.text-white
+    .container-app.h-100.d-flex.justify-content-between.align-items-center
+        a(href='http://localhost:5500') Logo
+        div searchBar
+        #nav-menu-bar
+            a.text-white-50.fw-light(href='#')  Filmler
+            .dropdown.ms-3
+                button#dropdownMenuButton1.btn.text-light.dropdown-toggle(type='button', data-bs-toggle='dropdown', aria-expanded='false') #{name}
+                ul.dropdown-menu(aria-labelledby='dropdownMenuButton1')
+                    li
+                        a.dropdown-item(href='http://localhost:5500/setting') Ayarlar
+                    li
+                        a.dropdown-item(href='http://localhost:5500/auth/logout') Çıkış

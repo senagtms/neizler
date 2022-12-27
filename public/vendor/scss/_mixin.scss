@@ -1,0 +1,49 @@
+@mixin parallax($parallax:inherit) {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: $parallax;
+}
+
+@mixin flex($direction:row, $content : center,$aling-items:center) {
+    display: flex;
+    justify-content: $content;
+    align-items: $aling-items;
+    flex-direction: $direction;
+}
+
+
+@mixin  borderRadius($par:.5rem) {
+    -webkit-border-radius: $par;
+    -moz-border-radius: $par;
+    border-radius: $par;
+    overflow: hidden;
+}
+
+@mixin transition($ms:150ms,$type:all,$animation: ease-in-out) {
+    -webkit-transition: $type $ms $animation;
+    -moz-transition: $type $ms $animation;
+    -o-transition: $type $ms $animation;
+    transition: $type $ms $animation;
+}
+
+@mixin boxShadow($par){
+    -webkit-box-shadow: $par;
+    -moz-box-shadow: $par;
+    box-shadow:  $par;
+}
+
+@mixin coverBg($img){
+    background: url($img) no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@mixin elevation($color:rgba(220,220,220,0.66),$px:1px 5px 17px 4px){
+    box-shadow: $px $color;
+    -webkit-box-shadow:$px $color;
+    -moz-box-shadow: $px $color;
+    
+}

@@ -1,0 +1,26 @@
+
+extends ../layout/onlinePageLayout
+
+block content
+    section.vh-100.pt-5
+        div(class="container-app")
+            .row
+                div(class="col-md-3")
+                     include ../partials/userInfoMenu
+                div(class="col-md-9")
+
+
+                    form#userInfoForm
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Email
+                            .col-sm-10
+                                input.form-control(type='text',name="email", value=`${userData.email}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label İsim
+                            .col-sm-10
+                                input.form-control(type='text',name="name" ,value=`${userData.name}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Doğum Tarihi
+                            .col-sm-10
+                                input.form-control(type='date',name="birthDay" ,value=`${userData.birthDay || ''}`)
+                        button.btn.btn-primary(type='submit') Kaydet

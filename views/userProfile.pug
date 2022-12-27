@@ -1,0 +1,42 @@
+
+extends layout/onlinePageLayout
+
+block content
+    section.vh-100(style='background-color: #f4f5f7;')
+        .container.py-5.h-100
+            .row.d-flex.justify-content-center.align-items-center.h-100
+                .col.col-lg-6.mb-4.mb-lg-0
+                    .card.mb-3(style='border-radius: .5rem;')
+                        .row.g-0
+                            .col-md-4.gradient-custom.text-center.text-white(style='border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;')
+                                img.img-fluid.my-5(src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp', alt='Avatar', style='width: 80px;')
+                                h5 Marie Horwitz
+                                p Web Designer
+                                i.far.fa-edit.mb-5
+                            .col-md-8
+                                .card-body.p-4
+                                    h6 #{userData.name.toUpperCase()}
+                                    hr.mt-0.mb-4
+                                    .row.pt-1
+                                        .col-6.mb-3
+                                            h6 Email
+                                            p.text-muted #{userData.email}
+                                        .col-6.mb-3
+                                            h6 username
+                                            p.text-muted #{userData.userName}
+                                    h6 Movies
+                                    hr.mt-0.mb-4
+                                    .row.pt-1
+                                        .col-6.mb-3
+                                            h6 Favs
+                                            p.text-muted Dark
+                                        .col-6.mb-3
+                                            h6 Last Seen
+                                            p.text-muted 1899
+                                    .d-flex.justify-content-start
+                                        a(href='#!')
+                                            i.fab.fa-facebook-f.fa-lg.me-3
+                                        a(href='#!')
+                                            i.fab.fa-twitter.fa-lg.me-3
+                                        a(href='#!')
+                                            i.fab.fa-instagram.fa-lg

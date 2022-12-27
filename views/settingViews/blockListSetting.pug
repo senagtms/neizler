@@ -1,0 +1,16 @@
+
+extends ../layout/onlinePageLayout
+
+block content
+    section.vh-100.pt-5
+        div(class="container-app")
+            .row
+                div(class="col-md-3")
+                    include ../partials/userInfoMenu
+                div(class="col-md-9")
+                    ul.list-group
+                        each val in blockedList
+                            li.list-group-item
+                                div.d-flex.justify-content-between.align-items-center
+                                    span=val.user.name
+                                    button(type="button", class="unBlockButton btn btn-outline-danger btn-sm",data-id=`${val._id}`) Engeli Kaldır

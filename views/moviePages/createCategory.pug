@@ -1,0 +1,15 @@
+extends ../layout/onlinePageLayout
+
+block content
+    section.vh-100(style='background-color: #f4f5f7;')
+        .container-app
+            .row.pt-5
+                .col-md-3
+                    include ../partials/adminMenu
+                .col-md-9
+                    form#createCategory
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Kategori Adı
+                            .col-sm-10
+                                input.form-control(type='text',name="title")
+                        button.btn.btn-primary(type='submit') Kaydet

@@ -1,0 +1,15 @@
+
+extends ../layout/onlinePageLayout
+block content
+    section.vh-100.mt-5
+       div(class="container-app")
+            .row
+                div(class="col-md-3")
+                    include ../partials/userInfoMenu
+                div(class="col-md-9")
+                    form#userNameForm
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Kullanıcı Adı
+                            .col-sm-10
+                                input.form-control(type='text',name="userName",value=`${userData.userName}`)
+                        button.btn.btn-primary(type='submit') Kaydet

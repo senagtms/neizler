@@ -1,0 +1,127 @@
+html {
+  font-size: 14px;
+}
+*:focus {
+  outline: none;
+}
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  main {
+    flex: 1;
+    &#authContent {
+      @include flex;
+    }
+  }
+}
+ul,
+li {
+  @extend %resetMP;
+  list-style-type: none;
+}
+
+a {
+  @extend %transitionDefault;
+}
+a,
+a:visited,
+a:hover,
+a:active,
+a:link {
+  text-decoration: none;
+}
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $mainFont;
+  background-color: $bodyBg;
+}
+.bg-purple {
+  background: $purple;
+}
+#nav-menu-bar {
+  display: flex;
+  align-items: center;
+
+  .menu-icon-button {
+    display: flex;
+    font-size: 18px;
+    margin: 0 10px;
+    position: relative;
+    &:hover {
+      color: $orange !important;
+    }
+    .badge-app {
+      display: flex;
+      height: 8px;
+      width: 8px;
+      font-size: 12px;
+      position: absolute;
+      background: $orange;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      right: 0;
+    }
+  }
+}
+.container-app {
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+  @include tabletSize {
+    padding: 0 10px;
+  }
+}
+.btn-app {
+  background: transparent;
+  border: none;
+}
+
+.page-title {
+  display: flex;
+  &-icon {
+    font-size: 22px;
+    color: $purple;
+  }
+  &-body {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+    &-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: $purple;
+    }
+    &-subtext {
+      color: $text-muted;
+      font-weight: 300;
+      font-size: 12px;
+    }
+  }
+}
+input {
+  border-color: $input-border-color;
+}
+*:focus,
+*:active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border-color: $input-border-color !important;
+}
+
+.btn-app {
+  background-color: $purple;
+  color: #fff;
+  font-weight: 300;
+  font-size: 13px;
+  &:hover {
+    background: lighten($purple, 15%);
+    color: #fff;
+  }
+}

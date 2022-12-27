@@ -1,0 +1,20 @@
+extends layout/onlinePageLayout
+block content
+    section.vh-100(style='background-color: #f4f5f7;')
+        .container.py-5.h-100
+            table.table
+                thead
+                    tr
+                        th(scope='col') İsim
+                        th(scope='col') Kullanıcı Adı
+                        th(scope='col') email
+                tbody
+                        each val in userList
+                            tr
+                                td
+                                    a(href="/user/profile/"+val.userName)=val.name
+                                td= val.userName
+                                td= val.email
+
+
+

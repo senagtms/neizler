@@ -1,0 +1,18 @@
+extends layout/offlinePageLayout
+
+block content
+    #authForm
+        form(method="POST")
+            .form-group.mb-2
+                label(for='exampleInputEmail1') Email
+                input#exampleInputEmail1.form-control(type='text' name='email' aria-describedby='emailHelp')
+            .form-group
+                label(for='exampleInputPassword1') Şifre
+                input#exampleInputPassword1.form-control(type='password', name='password')
+            .d-flex.justify-content-center
+                button.btn.btn-app.mt-4(type='submit') Giriş Yap
+
+            if errorMessage
+                .alert.alert-danger.mt-4(role='alert')
+                    p #{errorMessage}
+

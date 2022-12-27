@@ -1,0 +1,6 @@
+extends layout/onlinePageLayout
+
+block content
+    .container-app.mt-5
+        div=userDetail.name
+        button(type="button", class="btn btn-danger" id="banUser" data-id=userDetail._id) Kullanıcıyı Engelle

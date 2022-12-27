@@ -1,0 +1,31 @@
+extends layout/offlinePageLayout
+block content
+    #authForm
+        form(id="registerForm",method="POST")
+            .form-group.mb-2
+                label İsim
+                input.form-control(type='text' name='name')
+            .form-group.mb-2
+                label(for='exampleInputEmail1') Email
+                input#exampleInputEmail1.form-control(type='text' name="email" aria-describedby='emailHelp')
+            .form-group.mb-2
+                label(for='exampleInputPassword1') Şifre
+                input#exampleInputPassword1.form-control(type='password' name="password")
+            .form-group.mb-2
+                label(for='exampleInputPassword2') Şifre Tekrar
+                input#exampleInputPassword2.form-control(type='password' name="rePassword")
+            .form-check
+                .d-flex
+                    div
+                        input#male.form-check-input(type='radio' name='gender' value='1')
+                        label.form-check-label(for='male')  Erkek
+                    .ms-5
+                        input#female.form-check-input(type='radio' name='gender' value='2')
+                        label.form-check-label(for='female')  Kadın
+            .d-flex.justify-content-center
+                button.btn.btn-app.mt-4(type='submit') Kaydol
+            if errorMessage
+                .alert.alert-danger.mt-4(role='alert')
+                    p #{errorMessage}
+
+

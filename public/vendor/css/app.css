@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+a {
+  transition: all 150ms ease-in-out;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+section.movieCardContent #movieCards .movie-card-cover img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+html {
+  font-size: 14px;
+}
+
+*:focus {
+  outline: none;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#app main {
+  flex: 1;
+}
+#app main#authContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:link {
+  text-decoration: none;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+}
+
+.bg-purple {
+  background: #340048;
+}
+
+#nav-menu-bar {
+  display: flex;
+  align-items: center;
+}
+#nav-menu-bar .menu-icon-button {
+  display: flex;
+  font-size: 18px;
+  margin: 0 10px;
+  position: relative;
+}
+#nav-menu-bar .menu-icon-button:hover {
+  color: #ff9314 !important;
+}
+#nav-menu-bar .menu-icon-button .badge-app {
+  display: flex;
+  height: 8px;
+  width: 8px;
+  font-size: 12px;
+  position: absolute;
+  background: #ff9314;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  right: 0;
+}
+
+.container-app {
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+}
+@media only screen and (max-width: 64em) {
+  .container-app {
+    padding: 0 10px;
+  }
+}
+
+.btn-app {
+  background: transparent;
+  border: none;
+}
+
+.page-title {
+  display: flex;
+}
+.page-title-icon {
+  font-size: 22px;
+  color: #340048;
+}
+.page-title-body {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.page-title-body-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #340048;
+}
+.page-title-body-subtext {
+  color: rgba(229, 229, 229, 0.9058823529);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+input {
+  border-color: #d7d7d7;
+}
+
+*:focus,
+*:active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border-color: #d7d7d7 !important;
+}
+
+.btn-app {
+  background-color: #340048;
+  color: #fff;
+  font-weight: 300;
+  font-size: 13px;
+}
+.btn-app:hover {
+  background: #6b0095;
+  color: #fff;
+}
+
+header {
+  height: 60px;
+}
+
+footer {
+  background: #340048;
+  color: #fff;
+  padding: 20px 0;
+}
+footer #foot-top {
+  display: flex;
+  justify-content: space-between;
+}
+footer #foot-top ul#foot-socials {
+  display: flex;
+}
+footer #foot-top ul#foot-socials li a {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+}
+footer #foot-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+footer #foot-bottom #foot-links a {
+  display: inline-block;
+}
+
+section.movieCardContent #movieCards {
+  display: flex;
+  margin: -5px;
+  flex-wrap: wrap;
+}
+section.movieCardContent #movieCards .movie-card {
+  background: #fff;
+  flex: 0 0 calc(25% - 10px);
+  margin: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+section.movieCardContent #movieCards .movie-card-cover {
+  height: 380px;
+}
+section.movieCardContent #movieCards .movie-card-body {
+  padding: 0 5px;
+}
+section.movieCardContent #movieCards .movie-card-body-title {
+  color: #340048;
+  font-weight: 500;
+  font-size: 16px;
+}
+section.movieCardContent #movieCards .movie-card-body-title span {
+  font-weight: normal;
+}
+section.movieCardContent #movieCards .movie-card-body-category {
+  font-weight: 300;
+  font-size: 12px;
+}
+section.movieCardContent #movieCards .movie-card-body-button {
+  display: inline-block;
+  border: 1px solid #340048;
+  color: #340048 !important;
+  color: #fff;
+  padding: 5px;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+section.movieCardContent #movieCards .movie-card-body-button:hover {
+  background: #340048;
+  color: #fff !important;
+}
+@media only screen and (max-width: 64em) {
+  section.movieCardContent #movieCards .movie-card {
+    flex: 0 0 calc(33.3333333333% - 10px);
+  }
+  section.movieCardContent #movieCards .movie-card-cover {
+    height: 320px;
+  }
+}
+@media only screen and (max-width: 40em) {
+  section.movieCardContent #movieCards .movie-card {
+    flex: 0 0 calc(50% - 10px);
+  }
+  section.movieCardContent #movieCards .movie-card-cover {
+    height: 280px;
+  }
+}
+
+#authForm {
+  width: 380px;
+}/*# sourceMappingURL=app.css.map */

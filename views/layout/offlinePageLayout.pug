@@ -1,0 +1,47 @@
+doctype html
+html(lang='tr')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        title Bootstrap demo
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous')
+        link(rel='stylesheet' href=`${myUrl}/static/vendor/css/app.css`)
+    body
+        #app
+            include ../partials/offlineHeadMenu
+            main#authContent
+
+                block content
+
+            footer
+                .container-app
+                    #foot-top
+                        a(href='#') Logo
+                        ul#foot-socials
+                            li
+                                a(href='#')
+                                    i.fa-brands.fa-instagram
+                            li
+                                a(href='#')
+                                    i.fa-brands.fa-twitter
+                            li
+                                a(href='#')
+                                    i.fa-brands.fa-youtube
+                            li
+                                a(href='#')
+                                    i.fa-brands.fa-snapchat
+                    #foot-bottom.mt-2
+                        .text-white-50.fw-light
+                            | © Neizler.com - Her Hakkı Saklıdır
+                        #foot-links.text-white-50.fw-light
+                            a.text-white-50.fw-light(href='#') İletişim
+                            |  -
+                            a.text-white-50.fw-light(href='#') Çerez Politikası
+                            |  -
+                            a.text-white-50.fw-light(href='#') KVKK
+            script var myUrl = "#{myUrl}";
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js' integrity='sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+            script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
+            script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js' integrity='sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk' crossorigin='anonymous')
+            script(src="https://code.jquery.com/jquery-3.6.1.min.js"  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="  crossorigin="anonymous")
+            script(src=`${myUrl}/static/vendor/js/core.js`)
