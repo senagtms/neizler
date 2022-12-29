@@ -11,6 +11,8 @@ const upload = require('../../middlewares/fileUpload');
 /*movie Endpoints */
 router.get('/movie/create',MovieController.createMoviePage);
 router.post('/movie/create',upload.single('cover'),MovieController.save);
+router.get('/movie/list',MovieController.list)
+router.get('/movie/update/:id',MovieController.movieUpdatePage)
 
 /*category endpoints*/
 router.get('/movie/categoryList',CategoryController.list);

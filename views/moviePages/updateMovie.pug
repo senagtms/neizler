@@ -1,0 +1,59 @@
+extends ../layout/onlinePageLayout
+
+block content
+    section
+        .container-app
+            .row.pt-5
+                .col-md-3
+                    include ../partials/adminMenu
+                .col-md-9
+                    form(enctype="multipart/form-data")#createMovie
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Film Adı
+                            .col-sm-10
+                                input.form-control(type='text',name="title" value=`${findMovie.title}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Film Afişi
+                            .col-sm-10
+                                label.form-label(for='cover')
+                                    input#cover.form-control(type='file',name="cover" )
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Orjinal Adı
+                            .col-sm-10
+                                input.form-control(type='text',name="originalTitle" value=`${findMovie.originalTitle}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Yıl
+                            .col-sm-10
+                                input.form-control(type='number',name="year" maxlength="4" value=`${findMovie.year}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Imdb
+                            .col-sm-10
+                                input.form-control(type='text',name="imdb" value=`${findMovie.imdb}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Kategori
+                            .col-sm-10
+                                each val in selectedCategoryList
+                                    .form-check
+                                        input.form-check-input.cats(type='checkbox' id=val._id name='categories[]' value=val._id checked=val.isChecked)
+                                        label.form-check-label(for=val._id)
+                                            =val.title
+
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Yönetmen
+                            .col-sm-10
+                                select.selectpicker(name="director" class="director" data-live-search="true" )
+                                    each val in directors
+                                        - var selected = directors.includes(findMovie.director)
+
+                                        option(value= val._id selected=selected)=val.name + '' + val.surName
+
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Oyuncular
+                            .col-sm-10
+                                select.selectpicker(name="actors[]" class="actors" multiple data-live-search="true")
+                                    each val in selectedActorsList
+                                        option(value= val._id selected=val.isChecked)=val.name + '' + val.surName
+
+
+
+                        button.btn.btn-primary(type='submit') Kaydet

@@ -248,7 +248,7 @@ $(document).ready(function (){
                     return;
                 }
                 alert('Film  Eklendi');
-               // location.href = myUrl + 'admin/movie/list'
+               location.href = myUrl + '/admin/movie/list'
             }
         })
     })
