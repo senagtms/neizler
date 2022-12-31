@@ -30,7 +30,7 @@ class CategoryController{
     }
     async list(req,res,next){
         try{
-            const listCategory = await Category.find({title},'_id');
+            const listCategory = await Category.find({},'_id title');
             res.render("moviePages/categoryList",{url:req.myUrl, categoryData:listCategory})
 
         }catch (e) {

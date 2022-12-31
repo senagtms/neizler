@@ -7,7 +7,7 @@ block content
                 .col-md-3
                     include ../partials/adminMenu
                 .col-md-9
-                    table.table
+                    table.table#movieListTable
                         thead
                             tr
                                 th(scope='col') Film Adı
@@ -16,10 +16,10 @@ block content
                                 th(scope='col') Yıl
                                 th(scope='col') Imdb
                                 th(scope='col') Yönetmen
-                                th(scope='col') Düzenle
+                                th(scope='col') 
                         tbody
                             each val in list
-                                 tr
+                                 tr(data-id=val._id)
                                     td= val.title   
                                     td= val.originalTitle
                                     td
@@ -29,7 +29,12 @@ block content
                                     td= val.imdb
                                     td= val.directorData.name + ' ' + val.directorData.surName
                                     td
-                                        a(href=href=`${myUrl}/admin/movie/update/`+val._id) Düzenle
+                                        a(href=`${myUrl}/admin/movie/update/`+val._id) Düzenle
+                                        a.ms-3#deleteMovie(href=`${myUrl}/admin/movie/delete/`+val._id data-id=`${val._id}`) Sil
+                                
+                    a.button#loadMore(href='' class="btn btn-warning ") Daha Fazla...
+
+
 
                               
                                 

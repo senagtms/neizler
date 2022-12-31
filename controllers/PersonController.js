@@ -22,12 +22,22 @@ class PersonController{
         }
     }
 
-    list(req,res,next){
-        PersonService.find()
-            .then(list => {
-                res.render("moviePages/personList",{url:req.myUrl, personData:list})
-            })
-            .catch(e => next(e))
+    async list(req,res,next){
+        try{
+
+            const personData  = await PersonService.findWithLimit({},2)
+            res.render("moviePages/personList",{url:req.myUrl, personData})
+        }catch (e) {
+            next(e)
+        }
+    }
+    async listMorePerson(req,res,next){
+        try{
+            const lastId = req.params.id;
+
+        }catch (e) {
+            next(e);
+        }
     }
 
     maleList(req,res,next){

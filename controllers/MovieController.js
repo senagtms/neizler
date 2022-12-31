@@ -8,6 +8,8 @@ const ResponseManager = require('../managers/ResponseManager');
 const {generateSlugTitle} = require("../helpers/functions");
 const Response = new ResponseManager();
 const {personType} = require('../utils/types');
+const fs = require("fs");
+const FileManager = require('../managers/FileManager');
 
 class MovieController{
     async save(req,res,next){
@@ -15,8 +17,6 @@ class MovieController{
             if(!req.file?.filename || req.fileError){
                 return res.json(Response.error(req.fileError));
             }
-            console.log('resim => ',req.file.filename);
-            console.log('body => ',req.body.categories.split(','));
 
 
             const data = {
@@ -51,8 +51,18 @@ class MovieController{
     }
     async list(req,res,next){
         try {
-            const list = await Movie.joinedList();
+            const list = await Movie.joinedList().limit(1);
             res.render("moviePages/movieList",{url:req.myUrl, list})
+
+        }catch (e) {
+            next(e);
+        }
+    }
+    async listMore(req,res,next){
+        try {
+            const last_id = req.params.id;
+            const list = await Movie.joinedList(last_id).limit(1);
+            res.json(Response.accept(list));
 
         }catch (e) {
             next(e);
@@ -80,7 +90,7 @@ class MovieController{
                     isChecked: findMovie.actors.includes(item._id)
                 }
             });
-            console.log('selected => ',selectedActorsList);
+            
             res.render("moviePages/updateMovie",{findMovie, selectedCategoryList, directors,selectedActorsList})
           
 
@@ -90,9 +100,57 @@ class MovieController{
     }
     async updateMovie(req,res,next){
         try{
+            const id = req.params.id
+
+            const movie = await Movie.findById(id)
             
+            if(req.fileError){
+                return res.json(Response.error(req.fileError));
+            }
+            const data  = {
+                ...req.body,
+                categories:req.body.categories.split(','),
+                actors:req.body.actors.split(',')
+            }
+
+            delete data.cover;
+            if(req.file?.filename && req.file.filename !== undefined){
+                console.log('new cover =>  ',req.file.filename )
+                data.cover = req.file.filename
+                if(movie.cover){
+                    FileManager.deleteFile(movie.cover)
+                }
+               
+                
+            }
+            const result = await Movie.updateOne({_id:id},data);
+            if(!result){
+                return res.json(Response.error('Film Bilgileri Güncellenemedi'))
+            }
+            res.json(Response.accept());
+              
         }catch (e) {
-            
+            next(e)
+        }
+    }
+    async deleteMovie(req,res,next){
+        try {
+            const id = req.params.id;
+            const movie = await Movie.findById(id);
+
+            const deleteMovie_ = await Movie.deleteOne({_id:id});
+            if(!deleteMovie_){
+                res.json(Response.error('Film silinemedi'));
+                return;
+            }
+            if(movie.cover){
+                FileManager.deleteFile(movie.cover);
+            } 
+            res.json(Response.accept());
+                   
+
+        } catch (error) {
+            next(error)
         }
     }
 

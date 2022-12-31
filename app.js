@@ -5,6 +5,7 @@ const path = require('path');
 const mongo = require('./helpers/mongoDbConnection')();
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+if(process.platform === 'win32') process.env.PWD = process.cwd();
 const indexRouter = require('./routes/indexRoutes');
 const authRouter = require('./routes/authRoutes');
 const settingRouter = require('./routes/userSettingRoutes');

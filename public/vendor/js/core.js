@@ -1,4 +1,10 @@
 $(document).ready(function (){
+    let ajaxActive = false;
+    $(document).ajaxStart(function() {
+       ajaxActive = true
+    }).ajaxComplete(function() {
+        ajaxActive = false;
+    });
 /*    const registerSubmit = function (e){
         e.preventDefault();
         const data = $(this).serialize();
@@ -252,4 +258,115 @@ $(document).ready(function (){
             }
         })
     })
+    $('form#updateMovie').on('submit',function (e){
+        e.preventDefault();
+        const id = $(this).data('id');
+        const title= $('input[name="title"]').val();
+        const originalTitle= $('input[name="originalTitle"]').val();
+        const year= $('input[name="year"]').val();
+        const imdb= $('input[name="imdb"]').val();
+        const categories= getMapArray($('input[name="categories[]"]:checked'));
+        const director=$('.director :selected').val();
+        const actors= getMapArray( $('select[name="actors[]"'));
+        const cover = $("#cover")[0].files[0];
+ 
+        if(!categories.length){
+            alert('Kategori Seç');
+            return;
+        }
+        const formData = new FormData();
+        formData.append('title',title)
+        formData.append('originalTitle',originalTitle)
+        formData.append('year',year)
+        formData.append('imdb',imdb)
+        formData.append('categories',categories)
+        formData.append('director',director)
+        formData.append('actors',actors);
+        formData.append('cover',cover);
+
+        $.ajax({
+            type:'PATCH',
+            url:myUrl + '/admin/movie/update/'+id,
+            data:formData,
+            contentType: false,
+            processData: false,
+            dataType:'json',
+            success:function (result){
+                if(!result.success){
+                    alert(result.message);
+                    return;
+                }
+                alert('Film  Güncellendi');
+               location.href = myUrl + '/admin/movie/list'
+            }
+        })
+    })
+    $('#deleteMovie').click(function(e){
+        e.preventDefault();
+         if(!confirm('Filmi silmek istediğinizden emin misiniz?')) return false;
+        const id = $(this).data('id');
+        console.log('burdayım')
+        $.ajax({
+            type:'DELETE',
+            url:myUrl+'/admin/movie/'+id,
+            dataType:'json',
+            success:function(result){
+                if(!result){
+                    alert("film silinemedi");
+                    return;
+                }
+                alert("silme başarılı");
+                location.href = myUrl + '/admin/movie/list'
+
+            }
+
+        })
+        
+    })
+
+    $('#loadMore').on('click', function(e) {
+        e.preventDefault();
+            alert(ajaxActive)
+            if(ajaxActive) return false;
+           const last_id = $("table#movieListTable tr:last").data('id');
+           const button = $(this);
+           button.text('Yükleniyor...');
+           button.attr('disabled',true);
+          $.ajax({
+            type:'GET',
+            url: myUrl + '/admin/movie/more/'+last_id,
+            dataType:'json',
+            success:function (result) {
+                ajaxActive = false;
+                if(!result.data.length){
+                    alert("Yükelenecek Film Bulunamadı");
+                    button.text('Daha Fazla...');
+                    button.attr('disabled',false);
+                    return;
+                }
+                let content = '';
+                result.data.forEach(item => {
+                    data = [
+                        '<tr data-id="'+item._id+'">',
+                        '<td>'+item.title+'</td>',
+                        '<td>'+item.originalTitle+'</td>',
+                        '<td>'+item.categoriesData.map(cat => cat.title).join(',')+'</td>',
+                        '<td>'+item.year+'</td>',
+                        '<td>'+item.imdb+'</td>',
+                        '<td>'+item.directorData.name + ' '+item.directorData.surName+'</td>',
+                        '<td>',
+                        '<a href="'+myUrl+'/admin/movie/update/'+item._id+'">Düzenle</a>',
+                        '<a class="ms-3" href="'+myUrl+'/admin/movie/delete/'+item._id+'">Sil</a>',
+                        '</td>',
+                        '</tr>'
+                    ];
+                    content += data.join('');
+                })
+                $("table#movieListTable").append(content);
+                button.text('Daha Fazla...');
+                button.attr('disabled',false);s
+            }
+        });
+      });
+
 });
