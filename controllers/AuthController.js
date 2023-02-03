@@ -27,7 +27,7 @@ class AuthController{
 
             const {name,email,password,rePassword,gender} = req.body;
 
-            if(!name && !email && !password && !rePassword && !gender){ //newli denedik olmadı sdjhffhf
+            if(!name && !email && !password && !rePassword && !gender){ 
                 await req.flash('error',  'Lütfen Tüm Alanları Doldurun');
                 return res.redirect(res.locals.myUrl + '/auth/register')
             }

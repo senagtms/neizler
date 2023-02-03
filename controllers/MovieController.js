@@ -51,7 +51,7 @@ class MovieController{
     }
     async list(req,res,next){
         try {
-            const list = await Movie.joinedList().limit(1);
+            const list = await Movie.joinedList().limit(2);
             res.render("moviePages/movieList",{url:req.myUrl, list})
 
         }catch (e) {
@@ -90,6 +90,7 @@ class MovieController{
                     isChecked: findMovie.actors.includes(item._id)
                 }
             });
+            console.log(selectedActorsList)
             
             res.render("moviePages/updateMovie",{findMovie, selectedCategoryList, directors,selectedActorsList})
           

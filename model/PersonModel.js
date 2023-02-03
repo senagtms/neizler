@@ -19,7 +19,11 @@ const PersonSchema = new schema({
     gender:Number,
     birthday:Date,
     bio:String,
-    cover: String
+    cover: String,
+    isDeleted:{
+        type:Boolean,
+        default:false
+    }
 })
 
 module.exports = mongoose.model("Person",PersonSchema)

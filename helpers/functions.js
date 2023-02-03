@@ -17,6 +17,8 @@ const generateSlugTitle = text => {
     return slugify(text.toLowerCase());
 }
 
+
+
 module.exports = {
     isEmail,
     isValidUserName,

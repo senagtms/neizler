@@ -1,0 +1,15 @@
+extends ../layout/onlinePageLayout
+
+block content
+    section
+        .container-app
+            .row.pt-5
+                .col-md-3
+                    include ../partials/adminMenu
+                .col-md-9
+                    form#updateCategory(data-id=`${categoryList._id}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Kategori Adı
+                            .col-sm-10
+                                input.form-control(type='text',name="title" value=`${categoryList.title}`)
+                        button.btn.btn-primary(type='submit' ) Kaydet

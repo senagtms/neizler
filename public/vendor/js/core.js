@@ -5,6 +5,19 @@ $(document).ready(function (){
     }).ajaxComplete(function() {
         ajaxActive = false;
     });
+
+    function getPersonType(type){
+        switch(type){
+            case 1:
+                return 'Yönetmen';
+            case 2: 
+                return 'Aktör';
+            case 3: 
+                return 'Personel';
+            default:
+                return null;
+        }
+    }
 /*    const registerSubmit = function (e){
         e.preventDefault();
         const data = $(this).serialize();
@@ -184,20 +197,60 @@ $(document).ready(function (){
         })
 
     })
+    $('form#updateCategory').on('submit',function(e){
+        if(!confirm('Kategori Adını Değiştirmek istediğinizden emin misiniz?')) return false
+        e.preventDefault();
+        const id = $(this).data('id');
+        const data =  $('form#updateCategory').serialize();
+        $.ajax({
+            type:'PATCH',
+            url:myUrl + '/admin/movie/updateCategory/'+id,
+            dataType:'json',
+            data,
+            success:function(result){
+                if(!result.success){
+                    return alert(result.message);
+                }
+                return alert("Değişiklik başarıyla tamamlandı")
+            }
+        })
+    })
+    $(document).on('click','.deleteCategory',function(e){
+        if(!confirm('Silmek istediğinizden emin misiniz?')) return false;
+    
+        const id = $(this).data('id');
+        const data= {
+            _id:id,
+            isDeleted:true
+        }
+        $.ajax({
+            type:'PATCH',
+            dataType:'json',
+            data,
+            url: myUrl + '/admin/movie/categoryList/',
+            success:function(result){
+                if(!result.success){
+                    return alert(result.message);
+                }
+                alert("Katgori silindi");
+                return;
+            }
+
+        })
+    })
     $('form#createPerson').on('submit',function (e){
         e.preventDefault();
         const name= $('input[name="name"]').val();
         const surName= $('input[name="surName"]').val();
         const personType=  $('#personType :selected').val();
-        const gender= $('input[name="gender"]').val();
-
+        const gender= $('input[name="gender"]:checked').val();
         const data = {
             name,
             surName,
             personType,
             gender
         };
-        console.log(data)
+
         $.ajax({
             type:'POST',
             data,
@@ -208,6 +261,8 @@ $(document).ready(function (){
                     return;
                 }
                 alert('Kişi Eklendi');
+                location.href = myUrl + '/admin/movie/personList'
+
             }
 
         })
@@ -305,7 +360,6 @@ $(document).ready(function (){
         e.preventDefault();
          if(!confirm('Filmi silmek istediğinizden emin misiniz?')) return false;
         const id = $(this).data('id');
-        console.log('burdayım')
         $.ajax({
             type:'DELETE',
             url:myUrl+'/admin/movie/'+id,
@@ -326,7 +380,6 @@ $(document).ready(function (){
 
     $('#loadMore').on('click', function(e) {
         e.preventDefault();
-            alert(ajaxActive)
             if(ajaxActive) return false;
            const last_id = $("table#movieListTable tr:last").data('id');
            const button = $(this);
@@ -364,9 +417,102 @@ $(document).ready(function (){
                 })
                 $("table#movieListTable").append(content);
                 button.text('Daha Fazla...');
-                button.attr('disabled',false);s
+                button.attr('disabled',true);
+
             }
         });
       });
+
+      $('#loadMorePerson').on('click',function(e){
+        e.preventDefault();
+            if(ajaxActive) return false;
+            const last_id= $("table#personListTable tr:last").data('id');
+            const button = $(this);
+            button.text("yükleniyor...");
+            button.attr("disabled",true);
+            $.ajax({
+                type:'GET',
+                url:myUrl + '/admin/movie/personList/more/'+last_id,
+                dataType:'json',
+                success:function(result){
+                    ajaxActive = false;
+                    if(!result.data.length){
+                        alert("Yükelenecek Kişi Bulunamadı");
+                        button.text('Daha Fazla...');
+                        button.attr('disabled',false);
+                        return;
+                    }
+                    let content = '';
+                    
+                    result.data.forEach(item=>{
+                        const personType = getPersonType(item.personType)
+                        data=[
+                            '<tr data-id="'+item._id+'">',
+                            '<td>'+item.name+'</td>',
+                            '<td>'+item.surName + '</td>',
+                            '<td>'+personType + '</td>',
+                            '<td>',
+                            '<a href="'+myUrl+'/admin/movie/updatePerson/'+item._id+'">Düzenle</a>',
+                            '<a class="ms-3 deletePerson"  href=""   data-id="'+item._id+'" >Sil</a>',
+                            '</td>',
+                            '</tr>'
+                        ]
+                    })
+                    content += data.join('');
+                    $("table#personListTable").append(content);
+                    button.text('Daha Fazla...');
+                    button.attr('disabled',true);
+                    
+                }
+
+            })
+
+
+      })
+
+      $('#updatePerson').on('submit', function(e){
+            e.preventDefault();
+            const id = $(this).data('id');
+            const data = $('#updatePerson').serialize();
+            $.ajax({
+                type: 'PATCH',
+                url: myUrl + '/admin/movie/updatePerson/'+id,
+                dataType:'json',
+                data,
+                success: function(result){
+                    if(!result.success){
+                        alert(result.message);
+                        return;
+                    }
+                    alert("Bilgiler değiştirildi")
+                }
+
+            })
+            
+            
+      })
+
+      $(document).on('click','.deletePerson',function(e){
+            if(!confirm('Silmek istediğinizden emin misiniz?')) return false;
+            const id = $(this).data('id');
+            const data={
+                _id:id,
+                isDeleted:true
+            }
+            $.ajax({
+                type:'PATCH',
+                dataType:'json',
+                data,
+                url: myUrl + '/admin/movie/personList/',
+                success:function(result){
+                    if(!result.success){
+                        return alert(result.message);
+                    }
+                    alert("Kişi silindi");
+                    return;
+                }
+
+            })
+      })
 
 });

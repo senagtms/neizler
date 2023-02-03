@@ -6,14 +6,16 @@ block content
             .row.pt-5
                 .col-md-3
                     include ../partials/adminMenu
-                .col-md-9
+                .col-md-6
                     table.table
                          thead
                              tr
                                 th(scope='col') Kategori
-                                th(scope='col') Kategori Adı
+                                th 
                          tbody
                              each val in categoryData
                                  tr
                                      td= val.title
-                                     td= val.slugTitle
+                                     td
+                                        a(href=`${myUrl}/admin/movie/updateCategory/`+val._id) Düzenle
+                                        a.ms-4.deleteCategory(href="" data-id=val._id) Sil

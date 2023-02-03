@@ -1,0 +1,38 @@
+extends ../layout/onlinePageLayout
+
+block content
+    section
+        .container-app
+            .row.pt-5
+                .col-md-3
+                    include ../partials/adminMenu
+                .col-md-9
+                    form( data-id=`${personData._id}`)#updatePerson
+                        .row.mb-3
+                            label.col-sm-2.col-form-label İsim
+                            .col-sm-10
+                                input.form-control(type='text',name="name" value=`${personData.name}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Soyisim
+                            .col-sm-10
+                                input.form-control(type='text',name="surName"  value=`${personData.surName}`)
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Meslek
+                            .col-sm-10
+                                select.form-select(name="personType" id="personType")
+                                    option(value='1' selected = personData.personType===1) Yönetmen
+                                    option(value='2' selected = personData.personType===2) Aktör
+                                    option(value='3'  selected = personData.personType===3) Personel
+                        .row.mb-3
+                            label.col-sm-2.col-form-label Cinsiyet
+                            .col-sm-10.d-flex
+                                .form-check
+                                    input#flexRadioDefault1.form-check-input(type='radio' name='gender'  checked= personData.gender === 1 value="1")
+                                    label.form-check-label(for='flexRadioDefault1')
+                                        | Erkek
+                                .form-check.ms-4
+                                    input#flexRadioDefault2.form-check-input(type='radio' name='gender' checked=personData.gender === 2 value='2')
+                                    label.form-check-label(for='flexRadioDefault2')
+                                        | Kadın
+
+                        button.btn.btn-primary(type='submit') Kaydet

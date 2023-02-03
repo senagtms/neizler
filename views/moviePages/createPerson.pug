@@ -27,12 +27,12 @@ block content
                             label.col-sm-2.col-form-label Cinsiyet
                             .col-sm-10.d-flex
                                 .form-check
-                                    input#flexRadioDefault1.form-check-input(type='radio' name='gender' value='1')
-                                    label.form-check-label(for='flexRadioDefault1')
-                                        | Erkek
-                                .form-check.ms-4
-                                    input#flexRadioDefault2.form-check-input(type='radio' name='gender' checked='' value='2')
-                                    label.form-check-label(for='flexRadioDefault2')
-                                        | Kadın
-
+                                    .d-flex
+                                        div
+                                            input#male.form-check-input(type='radio' name='gender' value='1')
+                                            label.form-check-label(for='male')  Erkek
+                                        .ms-5
+                                            input#female.form-check-input(type='radio' name='gender' value='2')
+                                            label.form-check-label(for='female')  Kadın
+                                            
                         button.btn.btn-primary(type='submit') Kaydet

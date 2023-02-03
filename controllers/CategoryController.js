@@ -30,12 +30,48 @@ class CategoryController{
     }
     async list(req,res,next){
         try{
-            const listCategory = await Category.find({},'_id title');
+            const listCategory = await Category.find({isDeleted:false},'_id title');
             res.render("moviePages/categoryList",{url:req.myUrl, categoryData:listCategory})
 
         }catch (e) {
             next(e)
 
+        }
+    }
+    async updateGetPage(req,res,next){
+        try {
+             const id = req.params.id;
+             const categoryList = await Category.findOne({_id:id});
+             res.render("moviePages/updateCategory",{categoryList})
+        } catch (error) {
+            next(error);
+        }
+    }
+    async updateCategory(req,res,next){
+        try {
+            const id = req.params.id
+            if(!req.body.title){
+                return res.json(Response.error('Kategori Adı Boş Geçilemez'))
+            }
+            const updateCategory_ = await Category.updateOne({_id:id},req.body);
+            if(!updateCategory_){
+                return res.json(Response.error('Bilgiler güncellenmedi'))
+            }
+            return res.json(Response.accept());
+        } catch (error) {
+            next(error)
+        }
+    }
+    async deleteCategory(req,res,next){
+        try {
+            const delete_ = await Category.updateisDeleted({_id:req.body._id},{isDeleted:true})
+            if(!delete_){
+                return res.json(Response.error('Silinemedi'))
+            }
+            return res.json(Response.accept())
+            
+        } catch (error) {
+            next(error);
         }
     }
 }

@@ -10,6 +10,10 @@ const CategorySchema = new schema({
         type:String,
         required: true,
         unique:true
+    },
+    isDeleted:{
+        type:Boolean,
+        default:false
     }
 })
 

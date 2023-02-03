@@ -2,6 +2,8 @@ const userService = require("../services/UserService")
 const UserService  = new userService();
 const blockUserService = require('../services/BlockUserService');
 const BlockUserService = new blockUserService();
+const MovieService = require('../services/MovieService');
+const Movie = new MovieService();
 class HomeController{
     async index(req,res,next){
         try{
@@ -11,8 +13,6 @@ class HomeController{
             next(e)
         }
     }
-
-
 
     async userPosts(req,res,next){
         try {
@@ -24,7 +24,16 @@ class HomeController{
         }
     }
 
+    async movieList(req,res,next){
+        try {
+            const list = await Movie.joinedList();
+            console.log(list[1].categoriesData)
+            res.render("index",{url:req.myUrl, list})
 
+        }catch (e) {
+            next(e);
+        }
+    }
 
 }
 

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="vendor/css/app.css" />
+  </head>
+  <body>
+    <header class="bg-purple text-white">
+      <div
+        class="container-app h-100 d-flex justify-content-between align-items-center"
+      >
+        <a href="#">Logo</a>
+        <div>searchBar</div>
+        <div id="nav-menu-bar">
+          <a href="#" class="text-white-50 menu-icon-button">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge-app"></span>
+          </a>
+          <a href="#" class="text-white-50 menu-icon-button">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <div class="dropdown">
+            <button
+              class="btn-app text-white-50 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Necip Sünbül
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="mt-5">
+      <div class="container-app">
+        <div class="page-title">
+          <div class="page-title-icon">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+          </div>
+          <div class="page-title-body">
+            <span class="page-title-body-text"> Yeni Çıkanlar </span>
+            <span class="page-title-body-subtext">
+              Sizin İçin Yeni Çıkan Filmler
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="movieCardContent mt-3">
+      <div class="container-app">
+        <div id="movieCards">
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img2.acsta.net/r_1280_720/pictures/19/11/14/15/36/5224064.png"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                6 UNDERGROUND <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img4.acsta.net/pictures/14/01/22/18/38/106417.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                NEED FOR SPEED <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img3.acsta.net/pictures/14/06/20/07/47/502900.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                LUCY <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img4.acsta.net/pictures/19/02/06/08/15/4431903.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                SHAFT <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mt-5">
+      <div class="container-app">
+        <div class="page-title">
+          <div class="page-title-icon">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+          </div>
+          <div class="page-title-body">
+            <span class="page-title-body-text"> En Beğenilenler </span>
+            <span class="page-title-body-subtext">
+              Sizin İçin Yeni Çıkan Filmler
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="movieCardContent mt-3 mb-5">
+      <div class="container-app">
+        <div id="movieCards">
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img2.acsta.net/r_1280_720/pictures/19/11/14/15/36/5224064.png"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                6 UNDERGROUND <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img4.acsta.net/pictures/14/01/22/18/38/106417.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                NEED FOR SPEED <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img3.acsta.net/pictures/14/06/20/07/47/502900.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                LUCY <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+          <div class="movie-card">
+            <div class="movie-card-cover">
+              <img
+                src="https://tr.web.img4.acsta.net/pictures/19/02/06/08/15/4431903.jpg"
+                alt=""
+              />
+            </div>
+            <div class="movie-card-body">
+              <div class="movie-card-body-title mt-1">
+                SHAFT <span class="text-muted">(2014)</span>
+              </div>
+              <div class="movie-card-body-category text-muted">
+                Aksiyon, Komedi
+              </div>
+              <a href="#" class="movie-card-body-button mt-2">Filmi İncele</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container-app">
+        <div id="foot-top">
+          <a href="#">Logo</a>
+          <ul id="foot-socials">
+            <li>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-snapchat"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div id="foot-bottom" class="mt-2">
+          <div class="text-white-50 fw-light">
+            © Neizler.com - Her Hakkı Saklıdır
+          </div>
+          <div id="foot-links" class="text-white-50 fw-light">
+            <a href="#" class="text-white-50 fw-light">İletişim</a> -
+            <a href="#" class="text-white-50 fw-light">Çerez Politikası</a> -
+            <a href="#" class="text-white-50 fw-light">KVKK</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

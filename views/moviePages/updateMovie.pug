@@ -46,7 +46,6 @@ block content
                                 select.selectpicker(name="director" class="director" data-live-search="true" )
                                     each val in directors
                                         - var selected = directors.includes(findMovie.director)
-
                                         option(value= val._id selected=selected)=val.name + '' + val.surName
 
                         .row.mb-3

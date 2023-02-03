@@ -22,6 +22,9 @@ router.get('/movie/createCategory',(req,res,next)=>{
     res.render("moviePages/createCategory");
 });
 router.post('/movie/createCategory',CategoryController.save);
+router.get('/movie/updateCategory/:id',CategoryController.updateGetPage)
+router.patch('/movie/updateCategory/:id',CategoryController.updateCategory)
+router.patch('/movie/categoryList',CategoryController.deleteCategory)
 
 /*person endpoints*/
 router.get('/movie/personList',PersonController.list);
@@ -31,5 +34,9 @@ router.get('/movie/createPerson',(req,res,next)=>{
     res.render("moviePages/createPerson");
 });
 router.post('/movie/createPerson',PersonController.save);
+
+router.get("/movie/updatePerson/:id",PersonController.personUpdateGetPage)
+router.patch("/movie/updatePerson/:id",PersonController.updatePerson)
+router.patch("/movie/personList",PersonController.deletePerson)
 
 module.exports = router;
